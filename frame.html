@@ -8,25 +8,37 @@
 <h2>Registration Form</h2>
 
 <form>
-    <label>First Name:</label>
-    <input type="text"><br><br>
+    <table> 
+        <tr>
+            <td><label>First Name:</label></td>
+            <td><input type="text"><br><br></td>
+        </tr>
     
-    <label>Last Name:</label>
-    <input type="text"><br><br>
     
-    <label>ID:</label>
-    <input type="number"><br><br>
-    
-    <label>Password:</label>
-    <input type="password"><br><br>
-    
-    <label>Department:</label>
-    <select id="department">
-        <option value="">Select</option>
-        <option value="cse">Computer Science and Engineering</option>
-        <option value="llb">Law</option>
-        <option value="cs">Network Security</option>
-    </select><br><br>
+        <tr>
+            <td><label>Last Name:</label></td>
+            <td><input type="text"><br><br></td>
+        </tr>
+
+        <tr>    
+            <td><label>ID:</label></td>
+            <td><input type="number"><br><br></td>
+        </tr>   
+        
+        <tr>
+            <td><label>Password:</label></td>
+            <td><input type="password"><br><br></td>
+        </tr>
+
+    <tr>
+        <td><label>Department:</label></td>
+        <td><select id="department"></td>
+        <td><option value="">Select</option></td>
+        <td></td><option value="cse">Computer Science and Engineering</option></td>
+        <td></td><option value="llb">Law</option></td>
+        <td></td><option value="cs">Network Security</option></td>
+        <td></select><br><br></td>
+    </tr>
     
     <label>Skills:</label><br>
     <input type="checkbox" value="Programming">
@@ -57,6 +69,7 @@
     
     <input type="reset" value="Reset">
     <input type="submit" value="Submit">
+</table>
 </form> 
 
 </body>
