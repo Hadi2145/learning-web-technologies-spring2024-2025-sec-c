@@ -1,0 +1,69 @@
+<html lang="en">
+ <head>
+     <title>JS Examplet</title>
+ </head>
+ <body>
+     <h1 id="head">JS Example</h1>
+ 
+     <form action="home.html" onsubmit="return validate()">
+         Username: <input type="text" id="username" name="username" value="" onkeyup="changeText()"/> 
+         <p id="usererror"></p>
+         Password: <input type="password" id="password" name="password" value=""/> 
+         <p id="passerror"></p>
+         <input type="submit" name="button" id="button" value="submit"/>
+         <p id="validerror"></p>
+     </form>
+     
+     <script> 
+         function changeText(){
+             let username = document.getElementById('username').value;
+             let msg = document.getElementById('msg');
+ 
+             if(username == ""){
+                 msg.innerHTML = "Please type username first!";
+                 msg.style.color = 'red';
+             }else{
+                 document.getElementById('head').innerHTML = username;
+                 msg.innerHTML = "";
+             }
+         }
+ 
+         function validate() {
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let usererror = document.getElementById('usererror');
+    let passerror = document.getElementById('passerror');
+    let validerror = document.getElementById('validerror');
+
+
+    if (username === "") {
+        usererror.innerHTML = "Username is required!";
+        usererror.style.color = 'red';
+        isValid = false;
+    } else {
+        usererror.innerHTML = "";
+    }
+
+    if (password === "") {
+        passerror.innerHTML = "Password is required!";
+        passerror.style.color = 'red';
+        isValid = false;
+    } else {
+        passerror.innerHTML = "";
+    }
+
+    if (username !== "" && password !== "" && username === password) {
+        validerror.innerHTML = "Username and Password cannot be the same!";
+        validerror.style.color = 'red';
+        isValid = false;
+    } else {
+        validerror.innerHTML = "";
+    }
+
+    return isValid;
+}
+
+ 
+     </script>
+ </body>
+ </html>
