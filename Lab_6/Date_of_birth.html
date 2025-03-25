@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Date of Birth Validation</title>
+</head>
+<body>
+    <h1 id="head">Date of Birth Validation Example</h1>
+    
+    <form action="home.html" onsubmit="return validate()">
+        Day: <input type="text" id="day" name="day" onkeyup="validateDOB()" placeholder="DD" maxlength="2"/> 
+        Month: <input type="text" id="month" name="month" onkeyup="validateDOB()" placeholder="MM" maxlength="2"/>
+        Year: <input type="text" id="year" name="year" onkeyup="validateDOB()" placeholder="YYYY" maxlength="4"/> 
+        <p id="dobError"></p>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <script>
+        function validateDOB() {
+            let day = document.getElementById('day').value;
+            let month = document.getElementById('month').value;
+            let year = document.getElementById('year').value;
+            let dobError = document.getElementById('dobError');
+            
+            let dayNum = parseInt(day, 10);
+            let monthNum = parseInt(month, 10);
+            let yearNum = parseInt(year, 10);
+
+            if (day.trim() === "" || month.trim() === "" || year.trim() === "") {
+                dobError.innerHTML = "Date of birth cannot be empty!";
+                dobError.style.color = 'red';
+            } else if (isNaN(dayNum) || isNaN(monthNum) || isNaN(yearNum)) {
+                dobError.innerHTML = "Please enter valid numbers for day, month, and year!";
+                dobError.style.color = 'red';
+            } else if (dayNum < 1 || dayNum > 31) {
+                dobError.innerHTML = "Day must be between 1 and 31.";
+                dobError.style.color = 'red';
+            } else if (monthNum < 1 || monthNum > 12) {
+                dobError.innerHTML = "Month must be between 1 and 12.";
+                dobError.style.color = 'red';
+            } else if (yearNum < 1900 || yearNum > 2016) {
+                dobError.innerHTML = "Year must be between 1900 and 2016.";
+                dobError.style.color = 'red';
+            } else {
+                dobError.innerHTML = "";
+            }
+        }
+
+        function validate() {
+            let day = document.getElementById('day').value;
+            let month = document.getElementById('month').value;
+            let year = document.getElementById('year').value;
+            let dobError = document.getElementById('dobError');
+            
+            let dayNum = parseInt(day, 10);
+            let monthNum = parseInt(month, 10);
+            let yearNum = parseInt(year, 10);
+
+            if (day.trim() === "" || month.trim() === "" || year.trim() === "") {
+                dobError.innerHTML = "Date of birth cannot be empty!";
+                dobError.style.color = 'red';
+                return false;
+            } else if (isNaN(dayNum) || isNaN(monthNum) || isNaN(yearNum)) {
+                dobError.innerHTML = "Please enter valid numbers for day, month, and year!";
+                dobError.style.color = 'red';
+                return false;
+            } else if (dayNum < 1 || dayNum > 31) {
+                dobError.innerHTML = "Day must be between 1 and 31.";
+                dobError.style.color = 'red';
+                return false;
+            } else if (monthNum < 1 || monthNum > 12) {
+                dobError.innerHTML = "Month must be between 1 and 12.";
+                dobError.style.color = 'red';
+                return false;
+            } else if (yearNum < 1900 || yearNum > 2016) {
+                dobError.innerHTML = "Year must be between 1900 and 2016.";
+                dobError.style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Degree Validation</title>
+</head>
+<body>
+    <h1 id="head">Degree Validation Example</h1>
+    
+    <form action="home.html" onsubmit="return validate()">
+        <div style="margin-bottom: 10px;">
+            <label for="degree">Degree:</label><br>
+            <input type="checkbox" id="ssc" name="degree" value="SSC" onchange="validateDegree()"> SSC
+            <input type="checkbox" id="hsc" name="degree" value="HSC" onchange="validateDegree()"> HSC
+            <input type="checkbox" id="bsc" name="degree" value="BSc" onchange="validateDegree()"> BSc
+        </div>
+        <p id="degreeError"></p>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <script>
+        function validateDegree() {
+            let ssc = document.getElementById('ssc').checked;
+            let hsc = document.getElementById('hsc').checked;
+            let bsc = document.getElementById('bsc').checked;
+            let degreeError = document.getElementById('degreeError');
+
+            // If none of the checkboxes are selected
+            if (!ssc && !hsc && !bsc) {
+                degreeError.innerHTML = "At least one degree option must be selected!";
+                degreeError.style.color = 'red';
+            } else {
+                degreeError.innerHTML = "";
+            }
+        }
+
+        function validate() {
+            let ssc = document.getElementById('ssc').checked;
+            let hsc = document.getElementById('hsc').checked;
+            let bsc = document.getElementById('bsc').checked;
+            let degreeError = document.getElementById('degreeError');
+
+            // If none of the checkboxes are selected, return false to prevent form submission
+            if (!ssc && !hsc && !bsc) {
+                degreeError.innerHTML = "At least one degree option must be selected!";
+                degreeError.style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
