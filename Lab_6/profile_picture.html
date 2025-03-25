@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile Picture Validation</title>
+</head>
+<body>
+    <h1 id="head">Profile Picture Validation Example</h1>
+    
+    <form action="home.html" onsubmit="return validate()">
+        <!-- UserId Box -->
+        User ID: <input type="text" id="userId" name="userId" onkeyup="validateUserId()"/> 
+        <p id="userIdError"></p>
+        
+        <!-- Profile Picture Upload -->
+        Profile Picture: <input type="file" id="profilePic" name="profilePic" onchange="validateProfilePic()"/> 
+        <p id="profilePicError">No file selected</p>
+        
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <script>
+        function validateUserId() {
+            let userId = document.getElementById('userId').value;
+            let userIdError = document.getElementById('userIdError');
+            
+            if (userId.trim() === "") {
+                userIdError.innerHTML = "User ID cannot be empty!";
+                userIdError.style.color = 'red';
+            } else if (isNaN(userId) || userId <= 0) {
+                userIdError.innerHTML = "User ID must be a positive number!";
+                userIdError.style.color = 'red';
+            } else {
+                userIdError.innerHTML = "";
+            }
+        }
+
+        function validateProfilePic() {
+            let profilePic = document.getElementById('profilePic').files.length;
+            let profilePicError = document.getElementById('profilePicError');
+
+            if (profilePic === 0) {
+                profilePicError.innerHTML = "Profile picture cannot be empty!";
+                profilePicError.style.color = 'red';
+            } else {
+                profilePicError.innerHTML = "File selected";
+                profilePicError.style.color = 'green';
+            }
+        }
+
+        function validate() {
+            let userId = document.getElementById('userId').value;
+            let profilePic = document.getElementById('profilePic').files.length;
+            let userIdError = document.getElementById('userIdError');
+            let profilePicError = document.getElementById('profilePicError');
+            
+            // Validate User ID
+            if (userId.trim() === "" || isNaN(userId) || userId <= 0) {
+                userIdError.innerHTML = "User ID must be a positive number!";
+                userIdError.style.color = 'red';
+                return false;
+            }
+            
+            // Validate Profile Picture
+            if (profilePic === 0) {
+                profilePicError.innerHTML = "Profile picture cannot be empty!";
+                profilePicError.style.color = 'red';
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>

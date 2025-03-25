@@ -24,7 +24,6 @@
             let bsc = document.getElementById('bsc').checked;
             let degreeError = document.getElementById('degreeError');
 
-            // If none of the checkboxes are selected
             if (!ssc && !hsc && !bsc) {
                 degreeError.innerHTML = "At least one degree option must be selected!";
                 degreeError.style.color = 'red';
@@ -39,7 +38,6 @@
             let bsc = document.getElementById('bsc').checked;
             let degreeError = document.getElementById('degreeError');
 
-            // If none of the checkboxes are selected, return false to prevent form submission
             if (!ssc && !hsc && !bsc) {
                 degreeError.innerHTML = "At least one degree option must be selected!";
                 degreeError.style.color = 'red';
