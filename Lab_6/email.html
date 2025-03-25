@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Email Validation</title>
+</head>
+<body>
+    <h1 id="head">Email Validation Example</h1>
+    
+    <form action="home.html" onsubmit="return validate()">
+        Email: <input type="text" id="email" name="email" onkeyup="validateEmail()"/> 
+        <p id="emailError"></p>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <script>
+        function validateEmail() {
+            let email = document.getElementById('email').value;
+            let emailError = document.getElementById('emailError');
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            
+            if (email.trim() === "") {
+                emailError.innerHTML = "Email cannot be empty!";
+                emailError.style.color = 'red';
+            } else if (!emailPattern.test(email)) {
+                emailError.innerHTML = "Must be a valid email address (i.e anything@example.com).";
+                emailError.style.color = 'red';
+            } else {
+                emailError.innerHTML = "";
+            }
+        }
+
+        function validate() {
+            let email = document.getElementById('email').value;
+            let emailError = document.getElementById('emailError');
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            
+            if (email.trim() === "") {
+                emailError.innerHTML = "Email cannot be empty!";
+                emailError.style.color = 'red';
+                return false;
+            } else if (!emailPattern.test(email)) {
+                emailError.innerHTML = "Must be a valid email address (i.e anything@example.com).";
+                emailError.style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Name Validation</title>
+</head>
+<body>
+    <h1 id="head">Name Validation Example</h1>
+    
+    <form action="home.html" onsubmit="return validate()">
+        Name: <input type="text" id="name" name="name" onkeyup="validateName()"/> 
+        <p id="nameError"></p>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <script>
+        function validateName() {
+            let name = document.getElementById('name').value;
+            let nameError = document.getElementById('nameError');
+            
+            let namePattern = /^[a-zA-Z][a-zA-Z.\-]*\s+[a-zA-Z.\-]+$/;
+            
+            if (name.trim() === "") {
+                nameError.innerHTML = "Name cannot be empty!";
+                nameError.style.color = 'red';
+            } else if (!namePattern.test(name)) {
+                nameError.innerHTML = "Name must contain at least two words, start with a letter, and only include a-z, A-Z, dot (.), or dash (-).";
+                nameError.style.color = 'red';
+            } else {
+                document.getElementById('head').innerHTML = name;
+                nameError.innerHTML = "";
+            }
+        }
+
+        function validate() {
+            let name = document.getElementById('name').value;
+            if (name.trim() === "" || !/^[a-zA-Z][a-zA-Z.\-]*\s+[a-zA-Z.\-]+$/.test(name)) {
+                document.getElementById('nameError').innerHTML = "Invalid name format!";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
